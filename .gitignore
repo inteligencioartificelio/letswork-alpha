@@ -1,0 +1,27 @@
+# dependencies
+/node_modules
+
+# next
+/.next
+/out
+/build
+next-env.d.ts
+
+# db local
+/.pglite
+*.db
+*.db-*
+
+# env
+.env
+.env.local
+.env*.local
+
+# drizzle
+/drizzle/meta
+
+# misc
+*.log
+.DS_Store
+.vercel
+.tsbuildinfo

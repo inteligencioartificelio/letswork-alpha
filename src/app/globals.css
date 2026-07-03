@@ -1,0 +1,107 @@
+/* LetsWork Alpha — Minimal Pro design system (ported & elevated from reference) */
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono:wght@400;500;700&family=Noto+Sans:ital,wght@0,300;0,400;0,500;0,600;0,700;1,400&display=swap');
+
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer utilities {
+  .scrollbar-hide::-webkit-scrollbar { display: none; }
+  .scrollbar-hide { -ms-overflow-style: none; scrollbar-width: none; }
+}
+
+:root {
+  /* Preset por defecto: Minimal-Ink PRO (00) */
+  --color-bg-paper: #F5F3F1;
+  --color-ink-primary: #080808;
+  --color-accent-highlight: #080808;
+
+  --font-editorial: 'Noto Sans', sans-serif;
+  --font-technical: 'JetBrains Mono', monospace;
+
+  --radius: 10px;
+  transition-duration: 0ms !important;
+}
+
+/* PRO mode: transiciones bloqueadas a 0ms (estética e-ink) */
+* { transition-duration: 0ms !important; }
+
+html, body {
+  font-family: var(--font-editorial);
+  background-color: var(--color-bg-paper);
+  color: var(--color-ink-primary);
+  margin: 0;
+  padding: 0;
+  min-height: 100vh;
+  -webkit-font-smoothing: antialiased;
+  text-rendering: optimizeLegibility;
+}
+
+/* Títulos técnicos en mono, mayúsculas, con tracking */
+h2, h3, h4 { font-family: var(--font-technical) !important; text-transform: uppercase !important; letter-spacing: 0.05em; }
+
+/* Focus consistente de tinta */
+:focus-visible { outline: 2px solid var(--color-ink-primary); outline-offset: 2px; }
+
+/* --- MAPEO DE LOS 27 PRESETS --- */
+/* Categoría 0: Soberanía Absoluta (Dual-Ink) */
+html[data-theme="00"] { --color-bg-paper:#F5F3F1; --color-ink-primary:#080808; --color-accent-highlight:#080808; }
+html[data-theme="01"] { --color-bg-paper:#F5F3F1; --color-ink-primary:#0D0E11; --color-accent-highlight:#0D0E11; }
+/* Categoría 1: Sustratos de Papel Clásicos */
+html[data-theme="02"] { --color-bg-paper:#F5F3F1; --color-ink-primary:#0D0E11; --color-accent-highlight:#CD4E1E; }
+html[data-theme="03"] { --color-bg-paper:#FDFDFD; --color-ink-primary:#1A1A1D; --color-accent-highlight:#2B5C8F; }
+html[data-theme="04"] { --color-bg-paper:#EFECE6; --color-ink-primary:#242422; --color-accent-highlight:#993333; }
+html[data-theme="05"] { --color-bg-paper:#F3EFE3; --color-ink-primary:#181A1C; --color-accent-highlight:#1E3A8A; }
+html[data-theme="06"] { --color-bg-paper:#FAF5E8; --color-ink-primary:#2B251F; --color-accent-highlight:#8B4513; }
+html[data-theme="07"] { --color-bg-paper:#E3DAC9; --color-ink-primary:#3B2F2F; --color-accent-highlight:#A0522D; }
+/* Categoría 2: Filtros Orgánicos y Botánicos */
+html[data-theme="08"] { --color-bg-paper:#F3F6EE; --color-ink-primary:#2C3529; --color-accent-highlight:#5E7D43; }
+html[data-theme="09"] { --color-bg-paper:#FAF7F2; --color-ink-primary:#353A2E; --color-accent-highlight:#C05C33; }
+html[data-theme="10"] { --color-bg-paper:#F7EFE5; --color-ink-primary:#3B322C; --color-accent-highlight:#D99B26; }
+html[data-theme="11"] { --color-bg-paper:#FCEEF0; --color-ink-primary:#2D1F23; --color-accent-highlight:#DB2777; }
+html[data-theme="12"] { --color-bg-paper:#FAF4EB; --color-ink-primary:#432C1E; --color-accent-highlight:#A0522D; }
+html[data-theme="13"] { --color-bg-paper:#EFF2F4; --color-ink-primary:#1E252D; --color-accent-highlight:#4B7B94; }
+/* Categoría 3: Alto Contraste y Monocromía */
+html[data-theme="14"] { --color-bg-paper:#FFFFFF; --color-ink-primary:#000000; --color-accent-highlight:#000000; }
+html[data-theme="15"] { --color-bg-paper:#FAF8F5; --color-ink-primary:#3A3632; --color-accent-highlight:#6B5E4C; }
+html[data-theme="16"] { --color-bg-paper:#E2E2E2; --color-ink-primary:#1B1C1E; --color-accent-highlight:#0F766E; }
+html[data-theme="17"] { --color-bg-paper:#D8D8D8; --color-ink-primary:#1A1A1A; --color-accent-highlight:#BE123C; }
+html[data-theme="18"] { --color-bg-paper:#F8F5EC; --color-ink-primary:#0A0B0D; --color-accent-highlight:#6D28D9; }
+/* Categoría 4: Interfaces Nocturnas (Dark Mode) */
+html[data-theme="19"] { --color-bg-paper:#0A0A0A; --color-ink-primary:#F2F2F2; --color-accent-highlight:#E66E3C; }
+html[data-theme="20"] { --color-bg-paper:#111215; --color-ink-primary:#E2E8F0; --color-accent-highlight:#EF4444; }
+html[data-theme="21"] { --color-bg-paper:#1A2323; --color-ink-primary:#F1F5F5; --color-accent-highlight:#14B8A6; }
+html[data-theme="22"] { --color-bg-paper:#030503; --color-ink-primary:#F59E0B; --color-accent-highlight:#F59E0B; }
+html[data-theme="23"] { --color-bg-paper:#080711; --color-ink-primary:#E0E7FF; --color-accent-highlight:#A855F7; }
+html[data-theme="24"] { --color-bg-paper:#F1F5F9; --color-ink-primary:#1E293B; --color-accent-highlight:#2563EB; }
+html[data-theme="25"] { --color-bg-paper:#FAF5FF; --color-ink-primary:#1E1B4B; --color-accent-highlight:#8B5CF6; }
+html[data-theme="26"] { --color-bg-paper:#141416; --color-ink-primary:#E2E2E6; --color-accent-highlight:#9333EA; }
+
+/* Variables dinámicas derivadas */
+html {
+  --color-bg-surface: color-mix(in srgb, var(--color-ink-primary) 5%, transparent);
+  --color-ink-muted: color-mix(in srgb, var(--color-ink-primary) 50%, transparent);
+  --color-ink-border: color-mix(in srgb, var(--color-ink-primary) 15%, transparent);
+  --color-ink-strong: color-mix(in srgb, var(--color-ink-primary) 85%, transparent);
+}
+
+/* Compact mode: densidad de datos (múltiplos de 2px) */
+html.compact-mode { --radius: 6px; }
+html.compact-mode .p-8 { padding: 16px; }
+html.compact-mode .p-6 { padding: 12px; }
+html.compact-mode .p-4 { padding: 8px; }
+html.compact-mode .gap-8 { gap: 16px; }
+html.compact-mode .gap-6 { gap: 12px; }
+html.compact-mode .space-y-8 > * + * { margin-top: 16px; }
+html.compact-mode .space-y-6 > * + * { margin-top: 12px; }
+
+/* Scrollbars físicos de tinta */
+::-webkit-scrollbar { width: 8px; height: 8px; }
+::-webkit-scrollbar-track { background: var(--color-bg-paper); border-left: 1px solid var(--color-ink-border); }
+::-webkit-scrollbar-thumb { background: var(--color-ink-muted); border: 1px solid var(--color-ink-primary); }
+
+/* Dither image rendering */
+.dithered-image { image-rendering: pixelated; }
+
+/* Drag state for kanban */
+.dragging-task { opacity: 0.4; }
