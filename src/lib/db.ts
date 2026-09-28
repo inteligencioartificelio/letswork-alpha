@@ -37,8 +37,9 @@ async function createClient(): Promise<void> {
     _dbType = "pglite";
     const { PGlite } = await import("@electric-sql/pglite");
     const { drizzle } = await import("drizzle-orm/pglite");
-    const dataDir = path.join(process.cwd(), ".pglite");
+    const dataDir = process.env.PGLITE_DIR || path.join(process.cwd(), ".pglite");
     const pglite = new PGlite(dataDir);
+    await pglite.waitReady;
     _client = pglite;
     _db = drizzle(pglite, { schema });
   }
@@ -245,6 +246,7 @@ export async function ensureDB(): Promise<void> {
       await runMigrations();
       await seedIfEmpty();
     })().catch((err) => {
+      console.error("[DB ERROR] Failed to initialize database:", err);
       _initPromise = null;
       throw err;
     });
